@@ -8,12 +8,14 @@ type Props = {
   multiple?: boolean;
   options?: any;
   storageOptions?: any;
+  fileFieldProps?: any;
 } & FileInputProps &
   InputProps;
 
 export const AmplifyFileInput: React.FC<Props> = ({
   options = {},
   storageOptions = {},
+  fileFieldProps = {},
   ...props
 }) => {
   const { onDropAccepted } = useStorageInput({
@@ -25,7 +27,7 @@ export const AmplifyFileInput: React.FC<Props> = ({
 
   return (
     <FileInput {...props} options={{ ...options, onDropAccepted }}>
-      <AmplifyFileField storageOptions={storageOptions} />
+      <AmplifyFileField storageOptions={storageOptions} {...fileFieldProps} />
     </FileInput>
   );
 };
